@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import APPRoute from '../../const';
 import styles from './user-list.module.scss';
 
 function UserList(): JSX.Element {
@@ -20,7 +22,7 @@ function UserList(): JSX.Element {
               <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
             </div>
           </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
+          <Link className={styles.infoLink} to={APPRoute.Profile}>Подробнее</Link>
         </li>
         <li className={styles.listItem}>
           <div className={styles.info}>

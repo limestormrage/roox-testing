@@ -7,7 +7,7 @@ type LayoutProps = {
 
 function Layout({ children }: LayoutProps): JSX.Element {
   return (
-    <div className={styles.test}>
+    <div className={styles.wrapper}>
       {children}
     </div>
   );

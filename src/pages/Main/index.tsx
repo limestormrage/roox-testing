@@ -1,6 +1,13 @@
+import styles from './main.module.scss';
+import Sort from '../../components/Sort';
+import UserList from '../../components/User-list';
+
 function Main(): JSX.Element {
   return (
-    <p>test</p>
+    <div className={styles.wrapper}>
+      <Sort />
+      <UserList />
+    </div>
   );
 }
 

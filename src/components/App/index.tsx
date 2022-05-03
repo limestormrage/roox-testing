@@ -2,7 +2,7 @@ import './app.module.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '../../layout';
 import Main from '../../pages/Main';
-import APPRoute from '../../const';
+import { APPRoute } from '../../const';
 import Profile from '../../pages/Profile';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
             element={<Main />}
           />
           <Route
-            path={APPRoute.Profile}
+            path={`${APPRoute.Profile}/:id`}
             element={<Profile />}
           />
         </Routes>

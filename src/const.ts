@@ -1,6 +1,8 @@
-enum APPRoute {
+export enum APPRoute {
   Main = '/',
   Profile = '/profile',
 }
 
-export default APPRoute;
+export enum APIRoute {
+  Users = '/users',
+}

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { createApi } from './services/api';
+import { fetchUsersAction } from './store/api-actions';
 import { rootReducer } from './store/root-reducer';
 
 const api = createApi();
@@ -17,6 +18,8 @@ const store = configureStore({
     },
   }),
 });
+
+(store.dispatch)(fetchUsersAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

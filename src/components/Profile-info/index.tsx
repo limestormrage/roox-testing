@@ -1,6 +1,13 @@
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getUsers } from '../../store/users/selectors';
 import styles from './profile-info.module.scss';
 
 function ProfileInfo(): JSX.Element {
+  const { id } = useParams();
+  const users = useSelector(getUsers);
+  const currentUser = users.find((user) => user.id === Number(id));
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -11,35 +18,35 @@ function ProfileInfo(): JSX.Element {
         <div className={styles.formWrapper}>
           <div className={styles.formItem}>
             <label htmlFor="name">Name</label>
-            <input className={styles.input} type="text" id="name" value="Иван Иванов" disabled />
+            <input className={styles.input} type="text" id="name" value={currentUser?.name} disabled />
           </div>
           <div className={styles.formItem}>
             <label className="scad" htmlFor="user-name">User name</label>
-            <input className={styles.input} type="text" id="user-name" value="Иван Иванов" />
+            <input className={styles.input} type="text" id="user-name" value={currentUser?.username} />
           </div>
           <div className={styles.formItem}>
             <label className="scad" htmlFor="email">E-mail</label>
-            <input className={styles.input} type="email" id="email" />
+            <input className={styles.input} type="email" id="email" value={currentUser?.email} />
           </div>
           <div className={styles.formItem}>
             <label className="scad" htmlFor="user-street">Street</label>
-            <input className={styles.input} type="text" id="user-street" />
+            <input className={styles.input} type="text" id="user-street" value={currentUser?.address.street} />
           </div>
           <div className={styles.formItem}>
             <label className="scad" htmlFor="user-city">City</label>
-            <input className={styles.input} type="text" id="user-city" />
+            <input className={styles.input} type="text" id="user-city" value={currentUser?.address.city} />
           </div>
           <div className={styles.formItem}>
             <label className="scad" htmlFor="zip-code">Zip code</label>
-            <input className={styles.input} type="text" id="zip-code" />
+            <input className={styles.input} type="text" id="zip-code" value={currentUser?.address.zipcode} />
           </div>
           <div className={styles.formItem}>
             <label className="scad" htmlFor="user-phone">Phone</label>
-            <input className={styles.input} type="phone" id="user-phone" />
+            <input className={styles.input} type="phone" id="user-phone" value={currentUser?.phone} />
           </div>
           <div className={styles.formItem}>
             <label className="scad" htmlFor="user-website">Website</label>
-            <input className={styles.input} type="text" id="user-website" />
+            <input className={styles.input} type="text" id="user-website" value={currentUser?.website} />
           </div>
           <div className={styles.formItem}>
             <label className="scad" htmlFor="user-comment">Comment</label>

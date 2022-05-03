@@ -1,215 +1,51 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import APPRoute from '../../const';
+import { APPRoute } from '../../const';
+import { getUsers, getUsersLoading } from '../../store/users/selectors';
+import Loader from '../loader/loader';
 import styles from './user-list.module.scss';
 
 function UserList(): JSX.Element {
+  const users = useSelector(getUsers);
+  const usersLoading = useSelector(getUsersLoading);
+
+  if (usersLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className={styles.userPage}>
       <h1 className={styles.title}>Список пользователей</h1>
       <ul className={styles.userList}>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
+        {users.map((user) => (
+          <li className={styles.listItem} key={user.id}>
+            <div className={styles.info}>
+              <div className={styles.infoItem}>
+                <p className={styles.infoName}>ФИО:</p>
+                <p className={styles.infoText}>{user.name}</p>
+              </div>
+              <div className={styles.infoItem}>
+                <p className={styles.infoName}>город:</p>
+                <p className={styles.infoText}>{user.address.city}</p>
+              </div>
+              <div className={styles.infoItem}>
+                <p className={styles.infoName}>компания:</p>
+                <p className={styles.infoText}>{user.company.name}</p>
+              </div>
             </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <Link className={styles.infoLink} to={APPRoute.Profile}>Подробнее</Link>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
-        <li className={styles.listItem}>
-          <div className={styles.info}>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>ФИО:</p>
-              <p className={styles.infoText}>Иван Иванов</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>город:</p>
-              <p className={styles.infoText}>Москва</p>
-            </div>
-            <div className={styles.infoItem}>
-              <p className={styles.infoName}>компания:</p>
-              <p className={styles.infoText}>ООО &quot;Пример&quot;</p>
-            </div>
-          </div>
-          <a className={styles.infoLink} href="/">Подробнее</a>
-        </li>
+            <Link className={styles.infoLink} to={`${APPRoute.Profile}/${user.id}`}>Подробнее</Link>
+          </li>
+        ))}
       </ul>
-      <p className={styles.text}>Найдено 10 пользователей</p>
+      <p className={styles.text}>
+        Найдено
+        {' '}
+        {users ? users.length : 0}
+        {' '}
+        пользователей
+      </p>
     </div>
   );
 }
-// function UserList(): JSX.Element {
-//   return (
-//     <div className={styles.userPage}>
-//       <h1 className={styles.title}>Список пользователей</h1>
-//       <ul className={styles.userList}>
-//         <li className={styles.listItem}>
-//           <table>
-//             <tbody>
-//               <tr>
-//                 <td>ФИО</td>
-//                 <td>Иван Иванов</td>
-//               </tr>
-//               <tr>
-//                 <td>город</td>
-//                 <td>Москва</td>
-//               </tr>
-//               <tr>
-//                 <td>компания</td>
-//                 <td>ООО &quot;Пример&quot;</td>
-//               </tr>
-//             </tbody>
-//           </table>
-//           <a href="/">Подробнее</a>
-//         </li>
-//       </ul>
-//       <p>Найдено 10 пользователей</p>
-//     </div>
-//   );
-// }
 
 export default UserList;

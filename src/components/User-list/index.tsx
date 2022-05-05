@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { APPRoute } from '../../const';
-import { getUsers, getUsersLoading } from '../../store/users/selectors';
+import { getSortedUsers, getUsersLoading } from '../../store/users/selectors';
 import Loader from '../loader/loader';
 import styles from './user-list.module.scss';
 
 function UserList(): JSX.Element {
-  const users = useSelector(getUsers);
+  const users = useSelector(getSortedUsers);
   const usersLoading = useSelector(getUsersLoading);
 
   if (usersLoading) {

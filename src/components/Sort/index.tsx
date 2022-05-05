@@ -9,7 +9,6 @@ function Sort(): JSX.Element {
   const handleChangeSort = (type: string) => {
     dispatch(changeSortType(type));
   };
-
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Сортировка</h2>

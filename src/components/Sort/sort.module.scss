@@ -22,6 +22,7 @@
 
 .button {
     background-color: #4B51EF;
+    opacity: 0.7;
     border-radius: 5px;
     border: none;
     color: #FFFFFF;
@@ -30,7 +31,6 @@
     cursor: pointer;
 }
 
-.button--active {
-    color: red;
-    cursor: none;
+.buttonActive {
+    opacity: 1;
 }

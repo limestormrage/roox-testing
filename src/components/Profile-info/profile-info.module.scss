@@ -72,6 +72,10 @@ button[type=submit] {
     border-radius: 5px;
     resize: none;
     padding: 5px 10px;
+
+    &:read-only {
+        color: rgba(0, 0, 0, 0.3);
+    }
 }
 
 .input {
